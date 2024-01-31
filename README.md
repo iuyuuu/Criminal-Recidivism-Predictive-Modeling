@@ -101,18 +101,18 @@ race_recidivism_rates <- summarize(
 print(race_recidivism_rates)
 
 ```
-## # A tibble: 2 × 2
-##   risk      `mean(decile_score, na.rm = TRUE)/10`
-##   <fct>                                     <dbl>
-## 1 low risk                                  0.226
-## 2 high risk                                 0.719
+A tibble: 2 × 2
+risk      `mean(decile_score, na.rm = TRUE)/10`
+<fct>                                     <dbl>
+1 low risk                                  0.226
+2 high risk                                 0.719
 
 
-## # A tibble: 2 × 2
-##   race             `mean(decile_score, na.rm = TRUE)/10`
-##   <chr>                                            <dbl>
-## 1 African-American                                 0.528
-## 2 Caucasian                                        0.364
+A tibble: 2 × 2
+race             `mean(decile_score, na.rm = TRUE)/10`
+<chr>                                            <dbl>
+1 African-American                                 0.528
+2 Caucasian                                        0.364
 
 
 # Confusion Matrix for comparing COMPAS predictions and actual recidivism 
