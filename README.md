@@ -72,14 +72,14 @@ Create a new dummy variable based on the COMPAS’ risk score (decile_score), wh
 
 
 ```R
-compas0 <- mutate(compas0, 
-                  risk = cut(decile_score, 
-                             breaks = c(1, 4, 10),  
-                             labels = c("low risk", "high risk"), 
-                             include.lowest = TRUE, 
-                             right = TRUE))
-```
+compas0$risk <- cut(compas0$decile_score, 
+                    breaks = c(1, 4, 10),  
+                    labels = c("low risk", "high risk"), 
+                    include.lowest = TRUE, 
+                    right = TRUE)
 
+
+```
 
 Now analyze the offenders across this new risk category and found that  
 
@@ -102,6 +102,16 @@ print(race_recidivism_rates)
 
 ```
 
+    [90m# A tibble: 2 × 2[39m
+      risk      mean_score
+      [3m[90m<fct>[39m[23m          [3m[90m<dbl>[39m[23m
+    [90m1[39m low risk       0.226
+    [90m2[39m high risk      0.719
+    [90m# A tibble: 2 × 2[39m
+      race             mean_score
+      [3m[90m<chr>[39m[23m                 [3m[90m<dbl>[39m[23m
+    [90m1[39m African-American      0.528
+    [90m2[39m Caucasian             0.364
 
 
 # Confusion Matrix for comparing COMPAS predictions and actual recidivism 
@@ -130,7 +140,24 @@ compas_precision <- ((true_positive) / (true_positive+false_positive))
 compas_precision
 compas_recall <- ((true_positive) / (false_negative+true_positive)) 
 compas_recall
-`
+```
+
+          Predicted
+    Actual low risk high risk
+         0     1872       923
+         1      881      1602
+
+
+
+0.658203865100417
+
+
+
+0.634455445544554
+
+
+
+0.645187273459525
 
 
 We can note the accuracy of the COMPAS classification, and also how its errors were distributed. 
@@ -195,7 +222,48 @@ FPR2
 FNR2
 ```
 
+          Predicted
+    Actual low risk high risk
+         0      873       641
+         1      473      1188
 
 
 
+0.649133858267717
 
+
+
+0.42338177014531
+
+
+
+0.28476821192053
+
+
+          Predicted
+    Actual low risk high risk
+         0      999       282
+         1      408       414
+
+
+
+0.671897289586305
+
+
+
+0.220140515222482
+
+
+
+0.496350364963504
+
+
+
+```R
+
+```
+
+
+```R
+
+```
